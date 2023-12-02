@@ -7,7 +7,7 @@ import Foundation
 // add configuration builder
 // add logs saving into a file
 
-enum Log {
+public enum Log {
     
     enum LogLevels {
         
@@ -62,7 +62,7 @@ enum Log {
         Log.doLog(level: .error, str: str.description, shouldLogContext: shouldLogContext, context: context)
     }
 
-    fileprivate static func doLog(level: LogLevels, str: String, shouldLogContext: Bool, context: Context) {
+    private static func doLog(level: LogLevels, str: String, shouldLogContext: Bool, context: Context) {
         let logComponents = ["[\(level.prefix)]", str]
         
         var fullString = logComponents.joined(separator: " ")

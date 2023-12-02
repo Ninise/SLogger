@@ -5,11 +5,14 @@
 SLogger is a lightweight and customizable Swift logging utility designed to simplify the process of incorporating logging into your Swift projects. 
 It aims to provide a straightforward interface for developers to log messages at different levels, aiding in debugging, monitoring, and understanding the flow of their applications.
 
-Purpose
-Simplicity: Easily integrate logging into your Swift projects with minimal setup.
-Flexibility: Customize log messages, include contextual information, and categorize logs with tags.
-Performance: Designed for efficiency with conditional compilation to log only in DEBUG builds.
-Readability: Log messages include contextual details like file name, function, and line number for better traceability.
+## Features
+
+<ul>
+  <li><strong>Simplicity:</strong> Easily integrate logging into your Swift projects with minimal setup.</li>
+  <li><strong>Flexibility:</strong> Customize log messages, include contextual information, and categorize logs with tags.</li>
+  <li><strong>Performance:</strong> Designed for efficiency with conditional compilation to log only in DEBUG builds.</li>
+  <li><strong>Readability:</strong> Log messages include contextual details like file name, function, and line number for better traceability.</li>
+</ul>
 
 ## Usage
 
@@ -20,11 +23,20 @@ import SLogger
 
 2. Quick and easy usage
 ```swift
-  Log.info("info", tag: "LOGIN")
-  Log.debug("debug")
-  Log.warning("info")
-  Log.error("error")
-  Log.verbose("verbose")
+Log.info("info", tag: "LOGIN")
+Log.debug("debug")
+Log.warning("info")
+Log.error("error")
+Log.verbose("verbose")
+```
+
+3. Output
+```swift
+[ℹ️ INFO ℹ️] info ➜ ContentView.swift:23 body
+[🍀 DEBUG 🍀] debug ➜ ContentView.swift:24 body
+[⚠️ WARN ⚠️] info ➜ ContentView.swift:25 body
+[🚨 ERROR 🚨] error ➜ ContentView.swift:26 body
+[👀 VERBOSE 👀] verbose ➜ ContentView.swift:27 body
 ```
 
 

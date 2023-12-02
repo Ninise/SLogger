@@ -7,7 +7,7 @@ import Foundation
 // add configuration builder
 // add logs saving into a file
 
-enum SLogger {
+enum Log {
     
     enum LogLevels {
         
@@ -39,27 +39,27 @@ enum SLogger {
     
     static func verbose(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
         let context = Context(file: file, function: function, line: line)
-        SLogger.doLog(level: .verbose, str: str.description, shouldLogContext: shouldLogContext, context: context)
+        Log.doLog(level: .verbose, str: str.description, shouldLogContext: shouldLogContext, context: context)
     }
    
     static func info(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
         let context = Context(file: file, function: function, line: line)
-        SLogger.doLog(level: .info, str: str.description, shouldLogContext: shouldLogContext, context: context)
+        Log.doLog(level: .info, str: str.description, shouldLogContext: shouldLogContext, context: context)
     }
     
     static func debug(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
         let context = Context(file: file, function: function, line: line)
-        SLogger.doLog(level: .debug, str: str.description, shouldLogContext: shouldLogContext, context: context)
+        Log.doLog(level: .debug, str: str.description, shouldLogContext: shouldLogContext, context: context)
     }
     
     static func warning(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
         let context = Context(file: file, function: function, line: line)
-        SLogger.doLog(level: .warning, str: str.description, shouldLogContext: shouldLogContext, context: context)
+        Log.doLog(level: .warning, str: str.description, shouldLogContext: shouldLogContext, context: context)
     }
     
     static func error(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
         let context = Context(file: file, function: function, line: line)
-        SLogger.doLog(level: .error, str: str.description, shouldLogContext: shouldLogContext, context: context)
+        Log.doLog(level: .error, str: str.description, shouldLogContext: shouldLogContext, context: context)
     }
 
     fileprivate static func doLog(level: LogLevels, str: String, shouldLogContext: Bool, context: Context) {

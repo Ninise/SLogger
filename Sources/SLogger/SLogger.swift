@@ -19,11 +19,11 @@ public enum Log {
         
         fileprivate var prefix: String {
             switch self {
-            case .verbose:  return "VERBOSE 👀"
-            case .info:     return "INFO ℹ️"
-            case .debug:    return "DEBUG 🍀"
-            case .warning:  return "WARN ⚠️"
-            case .error:    return "ERROR 🚨"
+            case .verbose:  return "👀 VERBOSE 👀"
+            case .info:     return "ℹ️ INFO ℹ️"
+            case .debug:    return "🍀 DEBUG 🍀"
+            case .warning:  return "⚠️ WARN ⚠️"
+            case .error:    return "🚨 ERROR 🚨"
             }
         }
     }
@@ -37,32 +37,87 @@ public enum Log {
         }
     }
     
-    public static func verbose(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
+    /**
+     Logs a verbose message.
+
+     - Parameters:
+       - str: The message to be logged.
+       - tag: A custom tag for categorizing the log message.
+       - shouldLogContext: A flag indicating whether to include context information (default is `true`).
+       - file: The file name where the log message originated (default is `#file`).
+       - function: The function name where the log message originated (default is `#function`).
+       - line: The line number where the log message originated (default is `#line`).
+     */
+    public static func verbose(_ str: StaticString, tag: String = "", shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
         let context = Context(file: file, function: function, line: line)
-        Log.doLog(level: .verbose, str: str.description, shouldLogContext: shouldLogContext, context: context)
+        Log.doLog(level: .verbose, str: str.description, tag: tag, shouldLogContext: shouldLogContext, context: context)
     }
    
-    public static func info(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
+    /**
+     Logs an info message.
+
+     - Parameters:
+       - str: The message to be logged.
+       - tag: A custom tag for categorizing the log message.
+       - shouldLogContext: A flag indicating whether to include context information (default is `true`).
+       - file: The file name where the log message originated (default is `#file`).
+       - function: The function name where the log message originated (default is `#function`).
+       - line: The line number where the log message originated (default is `#line`).
+     */
+    public static func info(_ str: StaticString, tag: String = "", shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
         let context = Context(file: file, function: function, line: line)
-        Log.doLog(level: .info, str: str.description, shouldLogContext: shouldLogContext, context: context)
+        Log.doLog(level: .info, str: str.description, tag: tag, shouldLogContext: shouldLogContext, context: context)
     }
     
-    public static func debug(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
+    /**
+     Logs a debug message.
+
+     - Parameters:
+       - str: The message to be logged.
+       - tag: A custom tag for categorizing the log message.
+       - shouldLogContext: A flag indicating whether to include context information (default is `true`).
+       - file: The file name where the log message originated (default is `#file`).
+       - function: The function name where the log message originated (default is `#function`).
+       - line: The line number where the log message originated (default is `#line`).
+     */
+    public static func debug(_ str: StaticString, tag: String = "", shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
         let context = Context(file: file, function: function, line: line)
-        Log.doLog(level: .debug, str: str.description, shouldLogContext: shouldLogContext, context: context)
+        Log.doLog(level: .debug, str: str.description, tag: tag, shouldLogContext: shouldLogContext, context: context)
     }
     
-    public static func warning(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
+    /**
+     Logs a warning message.
+
+     - Parameters:
+       - str: The message to be logged.
+       - tag: A custom tag for categorizing the log message.
+       - shouldLogContext: A flag indicating whether to include context information (default is `true`).
+       - file: The file name where the log message originated (default is `#file`).
+       - function: The function name where the log message originated (default is `#function`).
+       - line: The line number where the log message originated (default is `#line`).
+     */
+    public static func warning(_ str: StaticString, tag: String = "", shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
         let context = Context(file: file, function: function, line: line)
-        Log.doLog(level: .warning, str: str.description, shouldLogContext: shouldLogContext, context: context)
+        Log.doLog(level: .warning, str: str.description, tag: tag, shouldLogContext: shouldLogContext, context: context)
     }
     
-    public static func error(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
+    /**
+     Logs an error message.
+
+     - Parameters:
+       - str: The message to be logged.
+       - tag: A custom tag for categorizing the log message.
+       - shouldLogContext: A flag indicating whether to include context information (default is `true`).
+       - file: The file name where the log message originated (default is `#file`).
+       - function: The function name where the log message originated (default is `#function`).
+       - line: The line number where the log message originated (default is `#line`).
+     */
+    public static func error(_ str: StaticString, tag: String = "", shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
         let context = Context(file: file, function: function, line: line)
-        Log.doLog(level: .error, str: str.description, shouldLogContext: shouldLogContext, context: context)
+        Log.doLog(level: .error, str: str.description, tag: tag, shouldLogContext: shouldLogContext, context: context)
     }
 
-    private static func doLog(level: LogLevels, str: String, shouldLogContext: Bool, context: Context) {
+    private static func doLog(level: LogLevels, str: String, tag: String = "", shouldLogContext: Bool, context: Context) {
         let logComponents = ["[\(level.prefix)]", str]
         
         var fullString = logComponents.joined(separator: " ")

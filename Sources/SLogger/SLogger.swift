@@ -37,27 +37,27 @@ public enum Log {
         }
     }
     
-    static func verbose(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
+    public static func verbose(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
         let context = Context(file: file, function: function, line: line)
         Log.doLog(level: .verbose, str: str.description, shouldLogContext: shouldLogContext, context: context)
     }
    
-    static func info(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
+    public static func info(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
         let context = Context(file: file, function: function, line: line)
         Log.doLog(level: .info, str: str.description, shouldLogContext: shouldLogContext, context: context)
     }
     
-    static func debug(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
+    public static func debug(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
         let context = Context(file: file, function: function, line: line)
         Log.doLog(level: .debug, str: str.description, shouldLogContext: shouldLogContext, context: context)
     }
     
-    static func warning(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
+    public static func warning(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
         let context = Context(file: file, function: function, line: line)
         Log.doLog(level: .warning, str: str.description, shouldLogContext: shouldLogContext, context: context)
     }
     
-    static func error(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
+    public static func error(_ str: StaticString, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {
         let context = Context(file: file, function: function, line: line)
         Log.doLog(level: .error, str: str.description, shouldLogContext: shouldLogContext, context: context)
     }
